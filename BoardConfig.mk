@@ -18,7 +18,7 @@
 # device-specific aspects (drivers) with a device-agnostic
 # product configuration (apps).
 #
-BOARD_PATH := device/oneplus/oneplus6
+BOARD_PATH := device/asus/Z01K
 
 PRODUCT_FULL_TREBLE := true
 BOARD_VNDK_VERSION := current
@@ -38,31 +38,32 @@ AB_OTA_UPDATER := true
 
 TARGET_USE_SDCLANG := true
 TARGET_NO_BOOTLOADER := true
-TARGET_OTA_ASSERT_DEVICE := oneplus6,enchilada
-TARGET_KERNEL_VERSION := 4.9
+TARGET_OTA_ASSERT_DEVICE := Z01K/ASUS_Z01KD
+TARGET_KERNEL_VERSION := 4.4
 TARGET_KERNEL_CLANG_COMPILE := false
-TARGET_BOOTLOADER_BOARD_NAME := sdm845
+TARGET_BOOTLOADER_BOARD_NAME := sdm660
 #TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
 
-# Android Verified Boot
-BOARD_PREBUILT_VBMETAIMAGE := $(BOARD_PATH)/vbmeta.img
+
 
 # Platform
-TARGET_BOARD_PLATFORM := sdm845
-TARGET_BOARD_PLATFORM_GPU := qcom-adreno630
+TARGET_BOARD_PLATFORM := sdm660
+TARGET_BOARD_PLATFORM_GPU := qcom-adreno512
+
 
 # Architecture
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
 TARGET_CPU_ABI := arm64-v8a
 TARGET_CPU_ABI2 :=
-TARGET_CPU_VARIANT := kryo300
+TARGET_CPU_VARIANT := generic
+TARGET_CPU_SMP := true
 
 TARGET_2ND_ARCH := arm
 TARGET_2ND_ARCH_VARIANT := armv7-a-neon
 TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
-TARGET_2ND_CPU_VARIANT := kryo
+TARGET_2ND_CPU_VARIANT := generic
 
 TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
 TARGET_USES_64_BIT_BINDER := true
@@ -71,13 +72,18 @@ TARGET_COMPILE_WITH_MSM_KERNEL := true
 ENABLE_CPUSETS := true
 ENABLE_SCHEDBOOST := true
 
-BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom androidboot.console=ttyMSM0 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 service_locator.enable=1 swiotlb=2048 androidboot.configfs=true androidboot.usbcontroller=a600000.dwc3
-BOARD_KERNEL_CMDLINE += androidboot.avb_version=0.0 androidboot.vbmeta.avb_version=0.0
-#BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
+# Kernel
+BOARD_KERNEL_CMDLINE := console=ttyMSM0,115200,n8
+BOARD_KERNEL_CMDLINE += androidboot.console=ttyMSM0 androidboot.hardware=qcom
+BOARD_KERNEL_CMDLINE += androidboot.configfs=true androidboot.usbcontroller=a800000.dwc3
+BOARD_KERNEL_CMDLINE += earlycon=msm_serial_dm,0xc170000 msm_rtb.filter=0x37 ehci-hcd.park=3
+BOARD_KERNEL_CMDLINE += sched_enable_hmp=1 sched_enable_power_aware=1
+BOARD_KERNEL_CMDLINE += lpm_levels.sleep_disabled=1 service_locator.enable=1 swiotlb=1
+BOARD_KERNEL_CMDLINE += user_debug=31 androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 4096
-BOARD_KERNEL_TAGS_OFFSET := 0x01E00000
-BOARD_RAMDISK_OFFSET     := 0x02000000
+BOARD_KERNEL_TAGS_OFFSET := 0x00000100
+BOARD_RAMDISK_OFFSET     := 0x01000000
 BOARD_ROOT_EXTRA_FOLDERS := firmware bt_firmware odm persist op1 op2
 BOARD_ROOT_EXTRA_SYMLINKS := /vendor/lib/dsp:/dsp
 TARGET_KERNEL_ARCH := arm64
@@ -85,8 +91,8 @@ TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 TARGET_KERNEL_APPEND_DTB := true
-TARGET_KERNEL_SOURCE := kernel/oneplus/sdm845
-TARGET_KERNEL_CONFIG := omni_oneplus6_defconfig
+TARGET_KERNEL_SOURCE := kernel/msm-4.4
+TARGET_KERNEL_CONFIG := ze554kl-userdebug-sdm660_defconfig
 
 # partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
