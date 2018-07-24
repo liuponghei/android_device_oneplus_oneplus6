@@ -1,7 +1,7 @@
 # GSI always generate dex pre-opt in system image
 ro.cp_system_other_odex=0
 
-# system.prop for sdm845
+# system.prop for sdm660
 #
 
 rild.libpath=/vendor/lib64/libril-qc-hal-qmi.so
