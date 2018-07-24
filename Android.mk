@@ -27,7 +27,7 @@
 
 LOCAL_PATH := $(call my-dir)
 
-ifeq ($(TARGET_DEVICE),$(filter $(TARGET_DEVICE),oneplus6))
+ifeq ($(TARGET_DEVICE),$(filter $(TARGET_DEVICE),Z01K))
 
 subdir_makefiles=$(call first-makefiles-under,$(LOCAL_PATH))
 $(foreach mk,$(subdir_makefiles),$(info including $(mk) ...)$(eval include $(mk)))
@@ -86,6 +86,6 @@ ALL_DEFAULT_INSTALLED_MODULES += $(IMS_SYMLINKS)
 #	ln -sf /dev/block/bootdevice/by-name/msadp \
 #	$(TARGET_OUT_VENDOR)/firmware/msadp)
 #
-#-include device/oneplus/oneplus6/tftp.mk
+#-include device/asus/Z01K/tftp.mk
 
 endif
