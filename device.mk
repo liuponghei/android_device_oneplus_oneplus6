@@ -19,7 +19,7 @@
 # device-specific aspects (drivers) with a device-agnostic
 # product configuration (apps).
 #
-$(call inherit-product, vendor/oneplus/oneplus6/device-vendor.mk)
+$(call inherit-product, vendor/asus/Z01K/device-vendor.mk)
 $(call inherit-product-if-exists, vendor/gapps/arm64/arm64-vendor.mk)
 $(call inherit-product, vendor/omni/config/phone-xxhdpi-4096-dalvik-heap.mk)
 $(call inherit-product, vendor/omni/config/phone-xxhdpi-2048-hwui-memory.mk)
@@ -65,7 +65,7 @@ PRODUCT_PACKAGES_DEBUG += \
     bootctl
 
 PRODUCT_STATIC_BOOT_CONTROL_HAL := \
-    bootctrl.sdm845 \
+    bootctrl.sdm660 \
     libcutils \
     libgptutils \
     libz \
@@ -134,8 +134,8 @@ PRODUCT_COPY_FILES += \
 
 # Prebuilt
 PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*,device/oneplus/oneplus6/prebuilt/system,system) \
-    $(call find-copy-subdir-files,*,device/oneplus/oneplus6/prebuilt/root,root)
+    $(call find-copy-subdir-files,*,device/asus/Z01K/prebuilt/system,system) \
+    $(call find-copy-subdir-files,*,device/asus/Z01K/prebuilt/root,root)
 
 
 PRODUCT_AAPT_CONFIG := xxhdpi
@@ -277,8 +277,8 @@ PRODUCT_COPY_FILES += \
 # does not exist as they are mutually exclusive.  Once all target's android_filesystem_config.h
 # have been removed, TARGET_FS_CONFIG_GEN should be made unconditional.
 DEVICE_CONFIG_DIR := $(dir $(firstword $(subst ]],, $(word 2, $(subst [[, ,$(_node_import_context))))))
-ifeq ($(wildcard device/oneplus/oneplus6/android_filesystem_config.h),)
-  TARGET_FS_CONFIG_GEN := device/oneplus/oneplus6/config.fs
+ifeq ($(wildcard device/asus/Z01K/android_filesystem_config.h),)
+  TARGET_FS_CONFIG_GEN := device/asus/Z01K/config.fs
 else
   $(warning **********)
   $(warning TODO: Need to replace legacy $(DEVICE_CONFIG_DIR)android_filesystem_config.h with config.fs)
