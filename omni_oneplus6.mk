@@ -32,14 +32,14 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 # must be before including omni part
 TARGET_BOOTANIMATION_SIZE := 1080p
 
-DEVICE_PACKAGE_OVERLAYS += device/oneplus/oneplus6/overlay
+DEVICE_PACKAGE_OVERLAYS += device/asus/Z01K/overlay
 DEVICE_PACKAGE_OVERLAYS += vendor/omni/overlay/CarrierConfig
 
 # Inherit from our custom product configuration
 $(call inherit-product, vendor/omni/config/common.mk)
 
 # Inherit from hardware-specific part of the product configuration
-$(call inherit-product, device/oneplus/oneplus6/device.mk)
+$(call inherit-product, device/asus/Z01K/device.mk)
 
 ALLOW_MISSING_DEPENDENCIES := true
 
@@ -47,16 +47,16 @@ PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.1-service
 
 # Discard inherited values and use our own instead.
-PRODUCT_NAME := omni_oneplus6
-PRODUCT_DEVICE := oneplus6
-PRODUCT_BRAND := OnePlus
-PRODUCT_MANUFACTURER := OnePlus
-PRODUCT_MODEL := ONEPLUS A6000
+PRODUCT_NAME := omni_Z01K
+PRODUCT_DEVICE := Z01K
+PRODUCT_BRAND := asus
+PRODUCT_MANUFACTURER := asus
+PRODUCT_MODEL := ASUS_Z01KD
 
-PRODUCT_BUILD_PROP_OVERRIDES += TARGET_DEVICE=OnePlus6 PRODUCT_NAME=OnePlus6
+PRODUCT_BUILD_PROP_OVERRIDES += TARGET_DEVICE=Z01K PRODUCT_NAME=Z01K
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    BUILD_FINGERPRINT=OnePlus/OnePlus6/OnePlus6:8.1.0/OPM1.171019.011/06140300:user/release-keys \
-    PRIVATE_BUILD_DESC="OnePlus6-user 8.1.0 OPM1.171019.011 273 release-keys"
+    BUILD_FINGERPRINT=asus/omni_Z01K/Z01K:8.1.0/OPM4.171019.021.R1/p07242213:userdebug/test-keys \
+    PRIVATE_BUILD_DESC="Z01K-userdebug 8.1.0 OPM1.171019.011 273 release-keys"
 
-TARGET_VENDOR := oneplus
+TARGET_VENDOR := asus
